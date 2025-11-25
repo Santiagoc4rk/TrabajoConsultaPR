@@ -41,6 +41,7 @@ def integracion(f: Double => Double, a: Double, b: Double): Double =
   val xBar = (a + b) / 2
   
   // Aplicamos la fórmula de Simpson 1/3
+  // (b-a) * [f(a) + 4*f(punto_medio) + f(b)] / 6
   (b - a) * (f(a) + 4 * f(xBar) + f(b)) / 6
 ```
 
@@ -58,9 +59,30 @@ Devuelve un `Double`, porque el resultado de una integral es un valor real.
 
 ---
 
+### Función para calcular el error: `error`
+```scala
+// Calcula el error absoluto entre el valor esperado y el obtenido
+// Error = |valor esperado - valor obtenido|
+def error(valorEsperado: Double, valorObtenido: Double): Double =
+  Math.abs(valorEsperado - valorObtenido)
+```
+
+### ¿Qué calcula esta función?
+
+Calcula el **error absoluto** entre el valor esperado (teórico) y el valor obtenido (aproximado).
+
+El error es igual al valor absoluto de la resta entre el valor esperado y el valor obtenido:
+
+$$\text{Error} = |\text{Valor Esperado} - \text{Valor Obtenido}|$$
+
+Mientras más pequeño sea el error, mejor es la aproximación.
+
+---
+
 ##  Estructura del código
 
 * **`integracion`** → Aplica el método de Simpson 1/3
+* **`error`** → Calcula el error absoluto de la aproximación
 * **`f1` a `f7`** → Funciones que representan diferentes integrandos
 * **`resultadoX`** → Aproximación numérica de cada integral
 * **`errorX`** → Diferencia absoluta entre el valor esperado y el obtenido
@@ -90,7 +112,7 @@ $$\int_{3}^{5}(-x^2 + 8x - 12)dx \approx 7.33$$
 
 ---
 
-##  Resultados
+## Resultados
 
 | Integral | Aproximación | Valor esperado | Error |
 |----------|--------------|----------------|-------|
@@ -106,10 +128,10 @@ $$\int_{3}^{5}(-x^2 + 8x - 12)dx \approx 7.33$$
 
 ##  Conclusiones
 
-*  **Simpson 1/3** ofrece excelentes aproximaciones usando solo **tres evaluaciones** de la función
-*  **Scala** permite trabajar de forma clara y elegante con funciones de orden superior
-*  El cálculo del **error** ayuda a comprobar la precisión del método para cada integral
-*  Este enfoque funcional hace el código más **modular**, **reutilizable** y **fácil de mantener**
+* **Simpson 1/3** ofrece excelentes aproximaciones usando solo **tres evaluaciones** de la función
+* **Scala** permite trabajar de forma clara y elegante con funciones de orden superior
+* El cálculo del **error** ayuda a comprobar la precisión del método para cada integral
+* Este enfoque funcional hace el código más **modular**, **reutilizable** y **fácil de mantener**
 
 ---
 
@@ -117,4 +139,3 @@ $$\int_{3}^{5}(-x^2 + 8x - 12)dx \approx 7.33$$
 
 * Método de Simpson: Técnica de integración numérica de segundo orden
 * Programación Funcional: Paradigma que trata la computación como evaluación de funciones matemáticas
-
