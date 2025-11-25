@@ -37,7 +37,10 @@ Y los combina según la fórmula de Simpson para obtener una aproximación preci
 ### Función principal: `integracion`
 ```scala
 def integracion(f: Double => Double, a: Double, b: Double): Double =
+  // Calculamos el punto medio del intervalo
   val xBar = (a + b) / 2
+  
+  // Aplicamos la fórmula de Simpson 1/3
   (b - a) * (f(a) + 4 * f(xBar) + f(b)) / 6
 ```
 
