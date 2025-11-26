@@ -91,7 +91,7 @@ Mientras más pequeño sea el error, mejor es la aproximación.
 ##  Ejemplo de uso
 ```scala
 // Definir la función a integrar
-def f1(x: Double): Double = -x * x + 8 * x - 12
+def f1(x: Double): Double = -Math.pow(x,2) + 8*x - 12
 
 // Calcular la integral
 val resultado1 = integracion(f1, 3, 5)
